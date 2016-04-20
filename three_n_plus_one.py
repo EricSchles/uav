@@ -24,7 +24,7 @@ for line in user_input:
         print()
         continue
         #sys.exit(0)
-    start,end = [int(elem) for elem in line.split(" ") if elem != '']
+    start,end = int(line.split(" ")[0]),int(line.split(" ")[1])
     if start > end:
         switched = True
         start,end = end,start 
@@ -34,7 +34,7 @@ for line in user_input:
     if switched:
         start,end = end,start
         switched = False
-    print(str(start)+" "+str(end)+" "+str(max(cycles)))
+    print("{} {} {}".format(start,end,max(cycles))
 
 time_diff = time.time() - start_time
 print("Took"+str(time_diff))
