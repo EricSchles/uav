@@ -15,8 +15,22 @@ def process_input(string):
     start,end = [int(elem) for elem in string.split(" ") if elem != '']
     return start,end
 
+def dyn_binary_search(elem,array):
+    firsts = [0]
+    lasts = [len(array)-1]
+    while firsts[-1] <= lasts[-1]:
+        midpoint = (firsts[-1] + lasts[-1]) // 2
+        if elem == array[midpoint]:
+            return True
+        elif elem < array[midpoint]:
+            lasts.append(midpoint-1)
+        else:
+            firsts.append(midpoint+1)
+    return False
+
 def main():
     lookup = {}
+    already_seen = []
     user_input = sys.stdin.read().split("\n")
     switched = False
     for line in user_input:
@@ -30,9 +44,11 @@ def main():
             start,end = end,start 
         cycles = []
         for i in range(start,end+1):
-            if i in lookup.keys():
+            if dyn_binary_search(i,already_seen):
                 cycles.append(lookup[i])
             else:
+                already_seen.append(i)
+                already_seen.sort()
                 lookup[i] = cycle_length(i)
                 cycles.append(lookup[i])
             if switched:
