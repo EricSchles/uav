@@ -1,11 +1,4 @@
 import sys
-import time
-
-def process_input(string):
-    start,end = [int(elem) for elem in string.split(" ") if elem != '']
-    return start,end
-
-start_time = time.time()
 
 lookup = {}
 user_input = sys.stdin.read().split("\n")
@@ -13,8 +6,8 @@ switched = False
 for line in user_input:
     if line == '':
         print()
-        continue
-        #sys.exit(0)
+        #continue
+        sys.exit(0)
     start,end = int(line.split(" ")[0]),int(line.split(" ")[1])
     if start > end:
         switched = True
@@ -37,7 +30,3 @@ for line in user_input:
         start,end = end,start
         switched = False
     print("{} {} {}".format(start,end,max(cycles)))
-
-print(len(lookup))
-time_diff = time.time() - start_time
-print("Took"+str(time_diff))
