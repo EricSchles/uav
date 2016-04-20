@@ -1,4 +1,4 @@
- 
+import sys
 import time
  
 cdef collatz(unsigned int n):
@@ -16,15 +16,31 @@ cdef find_max_collatz(unsigned int min, unsigned int max):
     cdef unsigned long num = 1
     cdef unsigned int count = 1
     cdef unsigned long iter = min
-    while iter < max:
+    while iter < max+1:
         count = collatz(iter)
         if count > m:
             m = count
             num = iter
         iter += 1
-    return num
+    return m
  
-start = time.time()
-max_found = find_max_collatz(1,1000000)   
+start_time = time.time()
+user_input = sys.stdin.read().split("\n")
+switched = False
+for line in user_input:
+    if line == '':
+        print()
+        continue
+        #sys.exit(0)
+    start,end = int(line.split(" ")[0]),int(line.split(" ")[1])
+    if start > end:
+        switched = True
+        start,end = end,start
+    sol = find_max_collatz(start,end)
+    if switched:
+        start,end = end,start
+        switched = False
+    print("{} {} {}".format(start,end,sol))
+
 elapsed = (time.time() - start)
-print "found %s in %s seconds" % (max_found,elapsed)
+print elapsed - start_time
