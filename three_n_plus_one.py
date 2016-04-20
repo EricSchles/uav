@@ -1,8 +1,12 @@
 import sys
 
 def memoized(fn):
-    memoized_lengths = [0] * 10000000
+    memoized_lengths = [0] * 1000000000
     def fn2(n):
+        try:
+            memoized_lengths[n]
+        except:
+            print(n)
         if not memoized_lengths[n]:
             memoized_lengths[n] = fn(n)
         return memoized_lengths[n]
