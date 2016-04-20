@@ -1,7 +1,7 @@
 import sys
 
 def memoized(fn):
-    memoized_lengths = [0] * 1000000
+    memoized_lengths = [0] * 10000000
     def fn2(n):
         if not memoized_lengths[n]:
             memoized_lengths[n] = fn(n)
@@ -13,7 +13,7 @@ def cycle_length(n):
     if n == 1: return 1
     if n % 2:
         return cycle_length(n * 3 + 1) + 1
-    return cycle_length(n / 2) + 1
+    return cycle_length(n // 2) + 1
     
 def problem(i,j):
     return max([cycle_length(x) for x in range(i, j+1)])
