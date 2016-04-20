@@ -46,7 +46,7 @@ class ThreeNPlusOne
           b = Integer.parseInt (idata.nextToken());
           if (a < b) { min=a; max=b; } else { min=b; max=a; }
           for (cyclemax=-1, num=min; num<=max; num++) {
-            for (n=num, cycle=1; n != 1; cycle++) if ((n % 2) != 0) n=3*n+1; else n >>= 1;
+	      for (n=num, cycle=1; n != 1; cycle++) if ((n % 2) != 0) n=3*n+1; else n >>= 1; //same thing as multiplication by 2
             if (cycle > cyclemax) cyclemax=cycle;
             }
           System.out.println (a + " " + b + " " + cyclemax);

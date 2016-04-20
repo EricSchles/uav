@@ -29,12 +29,8 @@ for line in user_input:
         print()
         continue
         #sys.exit(0)
-    start,end = int(line.split(" ")[0]),int(line.split(" ")[1])
-    if start > end:
-        switched = True
-        start,end = end,start
-    sol = problem(start,end)
-    if switched:
-        start,end = end,start
-        switched = False
+    a,b = int(line.split(" ")[0]),int(line.split(" ")[1])
+    if a<b: start,end = a,b 
+    else: start,end = b,a
+    
     print("{} {} {}".format(start,end,sol))
