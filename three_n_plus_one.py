@@ -34,7 +34,7 @@ for line in user_input:
     if switched:
         start,end = end,start
         switched = False
-    print("{} {} {}".format(start,end,max(cycles))
+    print("{} {} {}".format(start,end,max(cycles)))
 
 time_diff = time.time() - start_time
 print("Took"+str(time_diff))
