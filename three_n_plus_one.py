@@ -15,24 +15,25 @@ def process_input(string):
     start,end = [int(elem) for elem in string.split(" ") if elem != '']
     return start,end
 
-
-
 def main():
+    lookup = {}
     user_input = sys.stdin.read().split("\n")
     switched = False
     for line in user_input:
         if line == '':
             print()
-            sys.exit(0)
+            continue
+            #sys.exit(0)
         start,end = process_input(line)
         if start > end:
             switched = True
             start,end = end,start 
         cycles = []
         for i in range(start,end+1):
-            if i < 10000:
-                cycles.append(cycle_length(i))
+            if i in lookup.keys():
+                cycles.append(lookup[i])
             else:
+                lookup[i] = cycle_length(i)
                 cycles.append(lookup[i])
             if switched:
                 start,end = end,start
@@ -40,5 +41,7 @@ def main():
         print(str(start)+" "+str(end)+" "+str(max(cycles)))
 
 if __name__ == '__main__':
+    start = time.time()
     main()
-
+    time_diff = time.time() - start
+    print("Took"+str(time_diff))
