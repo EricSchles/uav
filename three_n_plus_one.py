@@ -1,7 +1,7 @@
 import sys
 
 def memoized(fn):
-    memoized_lengths = [0] * 1000000000000
+    memoized_lengths = [0] * 100000
     def fn2(n):
         try:
             memoized_lengths[n]
