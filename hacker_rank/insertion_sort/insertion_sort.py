@@ -22,9 +22,9 @@ def insertionSort(alist):
     while position>0 and alist[position-1]>currentvalue:
         alist[position]=alist[position-1]
         position = position-1
-        print(alist)
+        print(" ".join([str(elem) for elem in alist]))
     alist[position]=currentvalue
     return alist
-print(insertionSort(arr))
+print(" ".join(insertionSort([str(elem) for elem in arr])))
 
             
