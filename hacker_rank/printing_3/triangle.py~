@@ -1,0 +1,2 @@
+for i in range(1,input()): 
+    print i* sum(map(lambda x:10**i,xrange(i)))
