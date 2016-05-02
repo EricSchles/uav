@@ -1,0 +1,6 @@
+def F(A,start,end):
+    summation = 0
+    start_update = 0
+    end_update = end
+    for i in xrange(start,end+1):
+        

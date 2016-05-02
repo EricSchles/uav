@@ -1,0 +1,12 @@
+def F(A,start,end):
+    start -= 1
+    summation = 0
+    end_range = range(start,end)
+    while start <=end+end_update:
+        if end-end_update == start:
+            start += 1
+            end_update = start
+        if start == end+end_update:
+            summation += A[start]
+        else:
+            summation += max(A[start:end-end_update])

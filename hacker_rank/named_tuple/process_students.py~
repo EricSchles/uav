@@ -1,0 +1,3 @@
+from collections import namedtuple
+n = int(raw_input().strip())
+Students = namedtupled(raw_input().strip().split(" "))

@@ -1,0 +1,10 @@
+#!/bin/python
+
+import sys
+
+N = int(raw_input().strip())
+a = map(int,raw_input().strip().split(' '))
+dicter= {}
+for ind,val in enumerate(a):
+    dicter[ind+1] = val
+print dicter
