@@ -1,0 +1,14 @@
+import sys
+
+def find_ngrams(input_list, n):
+    return zip(*[input_list[i:] for i in range(n)])
+
+def is_beautiful(string):
+    three_grams = find_ngrams(string,3)
+    for gram in three_grams:
+        if "010" == gram:
+            return False
+    return True
+
+n = int(raw_input().strip())
+B = raw_input().strip()
